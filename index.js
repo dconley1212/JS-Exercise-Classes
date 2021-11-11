@@ -92,8 +92,9 @@ class Car {
       this.odometer += distance;
       this.tank -= consumedGallons;
     } else {
-      this.odometer = this.tank * this.milesPerGallon;
-      this.tank = distance / this.milesPerGallon;
+      const distanceTraveledNoFuelLeft = this.tank * this.milesPerGallon;
+      this.odometer += distanceTraveledNoFuelLeft;
+      this.tank -= distanceTraveledNoFuelLeft / this.milesPerGallon;
       return `I ran out of fuel at ${this.odometer} miles!`;
     }
   }
